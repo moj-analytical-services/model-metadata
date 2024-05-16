@@ -26,10 +26,10 @@ Results are saved in the `model_metadata` database on Athena under either:
 Here's how you can use the Model Metadata Uploader in your Python code:
 
 ```python
-from model_metadata import MetricsUploader
+from model_metadata import MetadataUploader
 
-# Initialize MetricsUploader with team name, project name, and optional unique run ID
-uploader = MetricsUploader(team='TeamA', project='ProjectX')
+# Initialize MetadataUploader with team name, project name, and optional unique run ID
+uploader = MetadataUploader(team='TeamA', project='ProjectX')
 
 # Upload a metric with name 'accuracy' and value 0.95
 uploader.upload_metric('accuracy', 0.95)
@@ -44,8 +44,8 @@ uploader.upload_monitoring('load_time', 0.1)
 You can customize the metadata by providing additional metrics and a unique run ID. If left blank the package will assign a random hex to your run id which will be the same across your metrics, parameters and monitoring args:
 
 ```python
-# Initialize MetricsUploader with custom unique run ID
-uploader = MetricsUploader(team='TeamA', project='ProjectX', unique_run_id='12345')
+# Initialize MetadataUploader with custom unique run ID
+uploader = MetadataUploader(team='TeamA', project='ProjectX', unique_run_id='12345')
 
 # Upload multiple metrics
 uploader.upload_metric('accuracy', 0.95)
@@ -61,7 +61,7 @@ from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, mean_absolute_error
-from model_metadata import MetricsUploader
+from model_metadata import MetadataUploader
 
 # Load the Iris dataset
 iris = load_iris()
@@ -82,7 +82,7 @@ mse = mean_squared_error(y_test, y_pred)
 mae = mean_absolute_error(y_test, y_pred)
 
 # Initialize MetricsUploader with team name and project name
-uploader = MetricsUploader(team='TeamA', project='ProjectX')
+uploader = MetadataUploader(team='TeamA', project='ProjectX')
 
 # Upload evaluation metrics to Athena
 uploader.upload_metric('mean_squared_error', mse)
