@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import patch, MagicMock
-from model_metadata.model_metadata import MetadataUploader
+from model_metadata.uploader import MetadataUploader
 import awswrangler as wr
 import uuid
 import datetime

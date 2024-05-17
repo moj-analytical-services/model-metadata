@@ -27,7 +27,7 @@ Results are saved in the `model_metadata` database on Athena under either:
 Here's how you can use the Model Metadata Uploader in your Python code:
 
 ```python
-from model_metadata import MetadataUploader
+from model_metadata.uploader import MetadataUploader
 
 # Initialize MetadataUploader with team name, project name, and optional unique run ID
 metup = MetadataUploader(team='TeamA', experiment='Exp1')
@@ -62,7 +62,7 @@ from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, mean_absolute_error
-from model_metadata import MetadataUploader
+from model_metadata.uploader import MetadataUploader
 
 # Load the Iris dataset
 iris = load_iris()
