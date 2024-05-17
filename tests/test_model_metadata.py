@@ -31,7 +31,7 @@ def test_log_metric(mock_to_parquet):
     assert df['table'].iloc[0] == 'metrics'
 
     # # Check if the S3 path, database, and table are correct
-    assert metup.s3_path == 's3://alpha-model-metadata/'
+    assert metup.s3_path + 'metrics' == 's3://alpha-model-metadata/metrics'
     assert metup.database == 'model_metadata'
     assert metup.timestamp.date() == datetime.datetime.now().date()
 
@@ -56,7 +56,7 @@ def test_log_param(mock_to_parquet):
     assert df['table'].iloc[0] == 'params'
 
     # # Check if the S3 path, database, and table are correct
-    assert metup.s3_path == 's3://alpha-model-metadata/'
+    assert metup.s3_path + 'params' == 's3://alpha-model-metadata/params'
     assert metup.database == 'model_metadata'
     assert metup.timestamp.date() == datetime.datetime.now().date()
 
@@ -81,7 +81,7 @@ def test_log_measurement(mock_to_parquet):
     assert df['table'].iloc[0] == 'measurements'
 
     # # Check if the S3 path, database, and table are correct
-    assert metup.s3_path == 's3://alpha-model-metadata/'
+    assert metup.s3_path + 'measurements' == 's3://alpha-model-metadata/measurements'
     assert metup.database == 'model_metadata'
     assert metup.timestamp.date() == datetime.datetime.now().date()
 
