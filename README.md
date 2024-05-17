@@ -14,7 +14,7 @@ The Model Metadata Uploader is a Python package that simplifies the process of u
 You can install the Model Metadata Uploader from our GitHub repository:
 
 ``` bash
-pip install git+https://https://github.com/moj-analytical-services/model_metadata.git
+pip install model_metadata@git+https://github.com/moj-analytical-services/model_metadata
 ```
 
 ## Simple Usage
