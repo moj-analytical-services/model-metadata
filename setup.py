@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 setup(
     name='model_metadata',
     version='0.1',
-    packages=find_packages(),
+    packages=find_packages(include=['model_metadata', 'model_metadata.*']),
     install_requires=[
         'awswrangler',
         'pandas',
