@@ -1,8 +1,9 @@
 # Model Metadata Uploader
 
-The Model Metadata Uploader is a Python package that simplifies the process of uploading metadata (metrics, parameters and monitoring args) to Athena for machine learning models. It provides a convenient interface for creating and managing metadata records associated with model runs, such as team name, project name, unique run ID, metrics, and timestamps.
+The Model Metadata Uploader is a Python package that simplifies the process of uploading metadata (metrics, parameters and monitoring args) to Athena for machine learning models. It provides a convenient interface for creating and managing metadata records associated with model runs, such as team name, project name, unique run ID, metrics, and timestamps. It follows the principles and logic of [MLFlow](https://mlflow.org/docs/latest/index.html) as we wish to move over to MLFlow in the near future.
 
 ## Features
+- Follows [MLFlow](https://mlflow.org/docs/latest/index.html) logic so you don't have to learn something different when we adopt MLFlow.
 - Easy Integration: Quickly integrate metadata uploading into your machine learning pipelines.
 - Flexible Configuration: Customize metadata records with team name, project name, unique run ID, and additional metrics.
 - Athena Integration: Seamlessly store metadata in Amazon Athena for easy querying and analysis.
@@ -19,9 +20,9 @@ pip install git+https://https://github.com/moj-analytical-services/model_metadat
 ## Simple Usage
 
 Results are saved in the `model_metadata` database on Athena under either:
-- table `metrics` for `upload_metric()`
-- table `params` for `upload_params()`
-- table `monitoring` for `upload_monitoring()`
+- table `metrics` for `log_metric()`
+- table `params` for `log_params()`
+- table `measurements` for `log_measurement()`
 
 Here's how you can use the Model Metadata Uploader in your Python code:
 
@@ -29,27 +30,27 @@ Here's how you can use the Model Metadata Uploader in your Python code:
 from model_metadata import MetadataUploader
 
 # Initialize MetadataUploader with team name, project name, and optional unique run ID
-uploader = MetadataUploader(team='TeamA', project='ProjectX')
+metup = MetadataUploader(team='TeamA', experiment='Exp1')
 
-# Upload a metric with name 'accuracy' and value 0.95
-uploader.upload_metric('accuracy', 0.95)
+# Log a metric with name 'accuracy' and value 0.95
+metup.log_metric('accuracy', 0.95)
 
-# Upload a param with name 'test_train_split' and value 0.4
-uploader.upload_metric('test_train_split', 0.4)
+# Log a param with name 'test_train_split' and value 0.4
+metup.log_metric('test_train_split', 0.4)
 
-# Upload a metric with name 'accuracy' and value 0.95
-uploader.upload_monitoring('load_time', 0.1)
+# Log a measurment with name 'load_name' and value0.1
+metup.log_measurement('load_time', 0.1)
 
 ```
 You can customize the metadata by providing additional metrics and a unique run ID. If left blank the package will assign a random hex to your run id which will be the same across your metrics, parameters and monitoring args:
 
 ```python
 # Initialize MetadataUploader with custom unique run ID
-uploader = MetadataUploader(team='TeamA', project='ProjectX', unique_run_id='12345')
+metup = MetadataUploader(team='TeamA', experiment='Exp1', run_name='Run1')
 
 # Upload multiple metrics
-uploader.upload_metric('accuracy', 0.95)
-uploader.upload_metric('loss', 0.1)
+metup.log_metric('accuracy', 0.95)
+metup.log_metric('loss', 0.1)
 ```
 
 ## Usage with sklearn (sci-kit learn)
@@ -82,11 +83,11 @@ mse = mean_squared_error(y_test, y_pred)
 mae = mean_absolute_error(y_test, y_pred)
 
 # Initialize MetricsUploader with team name and project name
-uploader = MetadataUploader(team='TeamA', project='ProjectX')
+metup = MetadataUploader(team='TeamA', experiment='Exp1')
 
 # Upload evaluation metrics to Athena
-uploader.upload_metric('mean_squared_error', mse)
-uploader.upload_metric('mean_absolute_error', mae)
+metup.log_metric('mean_squared_error', mse)
+metup.log_metric('mean_absolute_error', mae)
 
 ```
 
