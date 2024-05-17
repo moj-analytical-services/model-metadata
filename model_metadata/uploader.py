@@ -70,7 +70,7 @@ class MetadataUploader:
         df = pd.DataFrame(data)
         wr.s3.to_parquet(
             df=df,
-            path=f"{self.s3_path}/metrics",
+            path=f"{self.s3_path}metrics",
             dataset=True,
             database=self.database,
             table=table
@@ -115,7 +115,7 @@ class MetadataUploader:
         df = pd.DataFrame(data)
         wr.s3.to_parquet(
             df=df,
-            path=f"{self.s3_path}/params",
+            path=f"{self.s3_path}params",
             dataset=True,
             database=self.database,
             table=table
@@ -160,7 +160,7 @@ class MetadataUploader:
         df = pd.DataFrame(data)
         wr.s3.to_parquet(
             df=df,
-            path=f"{self.s3_path}/measurements",
+            path=f"{self.s3_path}measurements",
             dataset=True,
             database=self.database,
             table=table
