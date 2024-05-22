@@ -60,6 +60,8 @@ metup.log_metric('loss', 0.1)
 
 ## Usage with sklearn (sci-kit learn)
 
+See [/examples](/examples) folder for a demo of the below.
+
 You can use it alongside sklearn for example to save model metrics:
 
 ``` python
