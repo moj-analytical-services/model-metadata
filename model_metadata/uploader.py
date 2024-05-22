@@ -5,7 +5,7 @@ import pandas as pd
 
 
 class MetadataUploader:
-    def __init__(self, team: str, experiment: str, run_name: str=None, database: str='model_metadata', s3_path: str='s3://alpha-model-metadata/'):
+    def __init__(self, team: str, experiment: str, run_name: str=None, database: str='model_metadata', s3_path: str='s3://alpha-model-metadata-app/'):
         """
         Initialize the MetricsUploader instance.
 
@@ -14,7 +14,7 @@ class MetadataUploader:
         experiment (str): The name of the experiment.
         unique_run_id (str, optional): A unique identifier for the run. If not provided, a random hex ID will be generated. Default is None.
         database (str, optional): The name of the Athena database to store metrics. Default is 'model_metadata'.
-        s3_path (str, optional): The S3 path where the metrics data will be stored. Default is 's3://alpha-model-metadata/'.
+        s3_path (str, optional): The S3 path where the metrics data will be stored. Default is 's3://alpha-model-metadata-app/'.
 
         Attributes:
         team (str): The name of the team responsible for the experiment.
