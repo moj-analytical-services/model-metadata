@@ -41,7 +41,7 @@ metup = MetadataUploader(team='TeamA', experiment='Exp1')
 metup.log_metric('accuracy', 0.95)
 
 # Log a param with name 'test_train_split' and value 0.4
-metup.log_metric('test_train_split', 0.4)
+metup.log_param('test_train_split', 0.4)
 
 # Log a measurment with name 'load_name' and value0.1
 metup.log_measurement('load_time', 0.1)
