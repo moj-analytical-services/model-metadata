@@ -1,5 +1,5 @@
-name: Access to frontend
-description: Get access to the front end at https://model-metadata-uploader-dev.apps.live.cloud-platform.service.justice.gov.uk/
+name: Access to tool and frontend
+description: Get access to the tool and front end at https://model-metadata-uploader-dev.apps.live.cloud-platform.service.justice.gov.uk/
 body:
   - type: input
     id: name
