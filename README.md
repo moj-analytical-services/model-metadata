@@ -1,5 +1,8 @@
 # Model Metadata Uploader
 
+> [!WARNING]
+> This repo is no longer maintained since we have deployed the MLFlow Tracking Server on the AP
+
 https://github.com/moj-analytical-services/model-metadata/assets/15108577/4bd7a951-5860-40cc-bd00-de4bc93afa06
 
 The Model Metadata Uploader is a Python package that simplifies the process of uploading metadata (metrics, parameters and monitoring args) to Athena for machine learning models. It provides a convenient interface for creating and managing metadata records associated with model runs, such as team name, project name, unique run ID, metrics, and timestamps. It follows the principles and logic of [MLFlow](https://mlflow.org/docs/latest/index.html) as we wish to move over to MLFlow in the near future.
